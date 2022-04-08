@@ -1,0 +1,26 @@
+{
+  "name": "tutorials",
+  "version": "1.0.0",
+  "description": "Working through a Node.js and Express.js Tutorial on freecodeCamp to increase my understanding and tech stack!",
+  "main": "1-intro.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RvN-R/node-tutorials.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RvN-R/node-tutorials/issues"
+  },
+  "homepage": "https://github.com/RvN-R/node-tutorials#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
