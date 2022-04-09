@@ -1,38 +1,30 @@
-const {readFile, writeFile} = require('fs');
-const util = require('util');
-const readFilePromise = util.promisify(readFile); 
-const writeFilePromise = util.promisify(writeFile);
+ const http = require('http')
 
-const start = async () => {
-    try{
-        const first = await readFilePromise('./content/first.txt', 'utf8');
-        const second = await readFilePromise('./content/second.txt','utf8');
-        await writeFilePromise(
-            './content/result-mind-grenade.txt', 
-            `THIS IS AWESOME : ${first} ${second}` 
-        )
-        console.log(first,second)
-    } catch(error) {
-        console.log(error)
-    }
-}
+//  const server = http.createServer((req, res) => {
+//     res.end('Welcome')
+//  })
+ 
+ // Using Event Emitter API
+ const server = http.createServer()
+ // emits request event
+ // subscribe to it / listen to it / respond to it
+ server.on('request', (req , res) => {
+     res.end('Wecolcome')
+ })
 
-start()
+ server.listen(5000)
 
-// const getText = (path) => {
-//     return new Promise((resolve, reject)=> {
-//         readFile(path, 'utf8', (err, data)=>{
-//             if(err){
-//                 reject(err);
-//             }else{
-//                 resolve(data)
-//             }
-//         })
-//     })
-// }
+ 
+ const EventEmitter = require('events');
 
-    // getText('./content/first.txt')
-//     .then((result) => console.log(result))
-//     .catch((err) => console.log(err))
+ const customEmitter = new EventEmitter()
 
-// got to 3.01:13 in the video
+ customEmitter.on('response', (name,id) => {
+     console.log(`data recieved ${name} with id ${id}`)
+ })
+
+ customEmitter.on('response', () => {
+    console.log(`some other logic here`)
+})
+
+ customEmitter.emit('response', 'john', 34)
